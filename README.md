@@ -2,8 +2,10 @@ Software-Craftsmanship
 ======================
 
 Software Craftsmanship Katas from Code Mash 2014
-(javascript)
+<br/>(javascript)
 
-FizzBuzz Kata
-StringCalc Kata
-Greed Kata
+<ul>
+<li>FizzBuzz Kata</li>
+<li>StringCalc Kata</li>
+<li>Greed Kata</li>
+</ul>
