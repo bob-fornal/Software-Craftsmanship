@@ -88,7 +88,7 @@
 
 					var hour1 = hour%5;
 					var hour5 = (hour-hour1)/5;
-					for(var i=1, len=4; i<len; i++) {
+					for(var i=1, len=4; i<=len; i++) {
 						(i<=hour5)
 							? $(".hour5-" + i).css("background-color", red)
 							: $(".hour5-" + i).css("background-color", "white");
@@ -99,8 +99,7 @@
 					
 					var minute1 = minute%5;
 					var minute5 = (minute-minute1)/5;
-					console.log(minute, minute1, minute5);
-					for (var i=1, len=11; i<len; i++) {
+					for (var i=1, len=11; i<=len; i++) {
 						var link = ".minute5-" + i;
 						if (i<=minute5) {
 							if ($(link).hasClass("y-minute5sub")) {
@@ -112,7 +111,7 @@
 							$(link).css("background-color", "white")
 						}
 					}
-					for (var i=1, len=4; i<len; i++) {
+					for (var i=1, len=4; i<=len; i++) {
 						(i<=minute1)
 							? $(".minute1-" + i).css("background-color", yellow)
 							: $(".minute1-" + i).css("background-color", "white");
