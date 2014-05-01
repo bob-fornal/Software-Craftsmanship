@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<title>Berlin Clock</title>
+		<script src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+		
+		<style>
+			h2 {
+				color:					#ce1126;
+				font-family:			Arial;
+				-webkit-margin-before:	0;
+				-webkit-margin-after:	0;
+				-webkit-margin-start:	0;
+				-webkit-margin-end:		0;
+			}
+			.y-seconds, .r-hour5sub, .r-hour1sub, .y-minute5sub, .r-minute5sub, .y-minute1sub {
+				background-color:		white;
+				border:					1px solid black;
+				float:					left;
+				height:					10px;
+				width:					10px;
+				margin-right:			1px;
+			}
+			.seconds, .hour5, .hour1, .minute5, .minute1 {
+				background-color:		silver;
+				border:					2px solid black;
+				clear:					both;
+				display:				flex;
+				padding:				3px;
+				width:					160px;
+				margin-top:				1px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h2>Berlin Clock</h2>
+		<span class="seconds">
+			<span class="y-seconds"></span>
+		</span>
+		<span class="hour5">
+			<span class="r-hour5sub hour5-1"></span>
+			<span class="r-hour5sub hour5-2"></span>
+			<span class="r-hour5sub hour5-3"></span>
+			<span class="r-hour5sub hour5-4"></span>
+		</span>
+		<span class="hour1">
+			<span class="r-hour1sub hour1-1"></span>
+			<span class="r-hour1sub hour1-2"></span>
+			<span class="r-hour1sub hour1-3"></span>
+			<span class="r-hour1sub hour1-4"></span>
+		</span>
+		<span class="minute5">
+			<span class="y-minute5sub minute5-1"></span>
+			<span class="y-minute5sub minute5-2"></span>
+			<span class="r-minute5sub minute5-3"></span>
+			<span class="y-minute5sub minute5-4"></span>
+			<span class="y-minute5sub minute5-5"></span>
+			<span class="r-minute5sub minute5-6"></span>
+			<span class="y-minute5sub minute5-7"></span>
+			<span class="y-minute5sub minute5-8"></span>
+			<span class="r-minute5sub minute5-9"></span>
+			<span class="y-minute5sub minute5-10"></span>
+			<span class="y-minute5sub minute5-11"></span>
+		</span>
+		<span class="minute1">
+			<span class="y-minute1sub minute1-1"></span>
+			<span class="y-minute1sub minute1-2"></span>
+			<span class="y-minute1sub minute1-3"></span>
+			<span class="y-minute1sub minute1-4"></span>
+		</span>
+		
+		<script>
+			$(document).ready(function() {
+				// START TIMER
+				var yellow = "#d6cd48";
+				var red = "#ce1126";
+				
+				setInterval(function() {
+					var time = new Date();
+					
+					var hour = time.getHours();
+					var minute = time.getMinutes();
+					var seconds = time.getSeconds();
+					
+					(seconds%2 == 1)
+						? $(".y-seconds").css("background-color", yellow)
+						: $(".y-seconds").css("background-color", "white");
+
+					var hour1 = hour%5;
+					var hour5 = (hour-hour1)/5;
+					for(var i=1, len=4; i<len; i++) {
+						(i<=hour5)
+							? $(".hour5-" + i).css("background-color", red)
+							: $(".hour5-" + i).css("background-color", "white");
+						(i<=hour1)
+							? $(".hour1-" + i).css("background-color", red)
+							: $(".hour1-" + i).css("background-color", "white");
+					}
+					
+					var minute1 = minute%5;
+					var minute5 = (minute-minute1)/5;
+					console.log(minute, minute1, minute5);
+					for (var i=1, len=11; i<len; i++) {
+						var link = ".minute5-" + i;
+						if (i<=minute5) {
+							if ($(link).hasClass("y-minute5sub")) {
+								$(link).css("background-color", yellow)
+							} else {
+								$(link).css("background-color", red)
+							}
+						} else {
+							$(link).css("background-color", "white")
+						}
+					}
+					for (var i=1, len=4; i<len; i++) {
+						(i<=minute1)
+							? $(".minute1-" + i).css("background-color", yellow)
+							: $(".minute1-" + i).css("background-color", "white");
+					}
+				}, 1000);
+			});
+		</script>
+	</body>
+</html>
