@@ -11,5 +11,5 @@ Software Craftsmanship Katas from Code Mash 2014
 </ul>
 Personal Katas
 <ul>
-<li>4. Berlin Clock: 01 May 2014</li>
+<li>4. Berlin Clock: 01 May 2014 [<a href="http://content.codersdojo.org/code-kata-catalogue/berlin-clock/">KATA</a>]</li>
 </ul>
